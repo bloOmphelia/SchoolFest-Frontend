@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retro Pixel Fest - Event</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="event.css" />
+  <script src="js/script.js" defer></script>
+  <style>
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nomnom-loader {
+      width: 100px;
+      animation: bounce 3s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+   <!-- Loading Animation -->
+<div id="loader">
+  <img src="nomnomload.gif" class="nomnom-loader" alt="Loading...">
+</div>
+  <div class="wrapper">
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">SchoolFest</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="event.html" class="active">Event</a></li>
+          <li><a href="sorotan.html">Sorotan</a></li>
+          <li><a href="contact.html">About</a></li>
+          <li><a href="lojin.html">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <section class="event-section">
+        <h1 class="section-title">Upcoming Events</h1>
+        <div class="card-container">
+          <!-- Kartu 1 -->
+          <div class="card">
+            <img src="cosplay.jpg" alt="Event 1" class="card-image" />
+            <h2 class="card-title">Cosplay Event</h2>
+            <p class="card-short">Tunjukkan karakter favoritmu dalam balutan kostum.</p>
+            <p class="card-detail">Bergabunglah dalam parade cosplay dan tunjukkan karakter favoritmu dalam balutan kostum pixel! Ada lomba kostum terbaik, photobooth, dan hadiah menarik!.</p>
+            <a href="#" class="card-button">Detail</a>
+          </div>
+
+          <!-- Kartu 2 -->
+          <div class="card">
+            <img src="seni.jpg" alt="Event 2" class="card-image" />
+            <h2 class="card-title">Galeri Seni</h2>
+            <p class="card-short">Ruang penuh karya seni, dan digital dari para pelajar kreatif.</p>
+            <p class="card-detail">Nikmati karya seni digital dan tradisional dari siswa-siswi kreatif. Jangan lewatkan juga workshop acara dan voting karya favoritmu!</p>
+            <a href="#" class="card-button">Detail</a>
+          </div>
+
+          <!-- Kartu 3 -->
+          <div class="card">
+            <img src="bazar.jpg" alt="Event 3" class="card-image" />
+            <h2 class="card-title">Festival Bazar</h2>
+            <p class="card-short">Jelajahi bazar penuh barang unik, dari kerajinan tangan hingga camilan khas siswa!</p>
+            <p class="card-detail">Serunya belanja dan jajan di bazar penuh makanan, kerajinan tangan, dan barang unik. Ajak teman-temanmu dan jelajahi semua stand menariknya!</p>
+            <a href="#" class="card-button">Detail</a>
+          </div>
+
+          <!-- Kartu 4 -->
+          <div class="card">
+            <img src="basket.jpg" alt="Game 4" class="card-image" />
+            <h2 class="card-title">Kompetensi Olahraga</h2>
+            <p class="card-short">Ajang adu skill dan semangat di berbagai cabang olahraga seru!</p>
+            <p class="card-detail">Tunjukkan semangat sportivitasmu lewat berbagai cabang olahraga seperti basket 3-on-3, lari estafet, dan lomba dengan kostum olahraga!</p>
+            <a href="#" class="card-button">Detail</a>
+          </div>
+
+          <!-- Kartu 5 -->
+          <div class="card">
+            <img src="kerajinan.jpg" alt="Event 5" class="card-image" />
+            <h2 class="card-title">Booth Kreatif</h2>
+            <p class="card-short">Ruang eksplorasi untuk semua pecinta DIY dan craft!</p>
+            <p class="card-detail">Ekspresikan kreativitasmu di booth DIY dan kerajinan tangan! Mulai dari membuat keychain, hingga tantangan recycle art dengan barang bekas yang disulap jadi karya keren.</p>
+            <a href="#" class="card-button">Detail</a>
+          </div>
+
+          <!-- Kartu 6 -->
+          <div class="card">
+            <img src="teater.jpeg" alt="Event 6" class="card-image" />
+            <h2 class="card-title">Pentas Teater</h2>
+            <p class="card-short">Saksikan pertunjukan teater kreatif & kehidupan sekolah</p>
+            <p class="card-detail">Saksikan penampilan drama dan musikal bertema kehidupan sekolah dalam gaya yang lucu dan penuh kejutan. Ada juga improvisasi interaktif dan kostum ala karakter game!</p>
+            <a href="#" class="card-button">Detail</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Retro Pixel Fest. All rights reserved.</p>
+    </footer>
+    <!-- Modal Popup -->
+<div id="eventModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2 id="modal-title">Judul Event</h2>
+    <p><strong>Tanggal:</strong> <span id="modal-date">-</span></p>
+    <p><strong>Tempat:</strong> <span id="modal-place">-</span></p>
+    <p><strong>Pendaftaran:</strong> <span id="modal-register">-</span></p>
+  </div>
+</div>
+  </div>
+  <script>
+  const modal = document.getElementById("eventModal");
+  const closeBtn = document.querySelector(".close-btn");
+
+  const events = [
+    {
+      title: "Cosplay Event",
+      date: "15 Juli 2025",
+      place: "Aula Utama",
+      register: "bit.ly/daftar-cosplay"
+    },
+    {
+      title: "Galeri Seni",
+      date: "16 Juli 2025",
+      place: "Ruang Kesenian",
+      register: "bit.ly/galeri-seni"
+    },
+    {
+      title: "Festival Bazar",
+      date: "17 Juli 2025",
+      place: "Lapangan Sekolah",
+      register: "bit.ly/festival-bazar"
+    },
+    {
+      title: "Kompetensi Olahraga",
+      date: "18 Juli 2025",
+      place: "Lapangan Basket",
+      register: "bit.ly/olahraga-retro"
+    },
+    {
+      title: "Booth Kreatif",
+      date: "19 Juli 2025",
+      place: "Gedung B - Lantai 1",
+      register: "bit.ly/booth-kreatif"
+    },
+    {
+      title: "Pentas Teater",
+      date: "20 Juli 2025",
+      place: "Aula Drama",
+      register: "bit.ly/pentas-teater"
+    }
+  ];
+
+  const detailButtons = document.querySelectorAll(".card-button");
+
+  detailButtons.forEach((btn, index) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const event = events[index];
+      document.getElementById("modal-title").textContent = event.title;
+      document.getElementById("modal-date").textContent = event.date;
+      document.getElementById("modal-place").textContent = event.place;
+      document.getElementById("modal-register").innerHTML = `<a href="https://${event.register}" target="_blank">${event.register}</a>`;
+      modal.style.display = "block";
+    });
+  });
+
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  window.onclick = (event) => {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+    window.addEventListener("load", function () {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+      }, 1000);
+    });
+</script>
+
+</body>
+</html>

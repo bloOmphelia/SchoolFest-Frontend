@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Retro Pixel Fest</title>
+  <link rel="stylesheet" href="contact.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nomnom-loader {
+      width: 100px;
+      animation: bounce 3s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+   <!-- Loading Animation -->
+<div id="loader">
+  <img src="nomnomload.gif" class="nomnom-loader" alt="Loading...">
+</div>
+  <div class="wrapper">
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">SchoolFest</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="event.html">Event</a></li>
+          <li><a href="sorotan.html">Sorotan</a></li>
+          <li><a href="contact.html">About</a></li>
+          <li><a href="lojin.html">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="about-section">
+      <h1>ABOUT</h1>
+
+      <div class="about-block">
+        <h2>Who Am I</h2>
+        <p>Hai! Aku <strong>Cahaya</strong>, pelajar jurusan RPL dari SMK Widyagama Malang. Web ini dibuat untuk uji kompetensi.</p>
+      </div>
+
+      <div class="about-block">
+        <h2>Tools</h2>
+        <ul>
+          <li>HTML, CSS, JavaScript</li>
+          <li>Visual Studio Code</li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <h2>Tentang Web</h2>
+        <p>SchoolFest sebuah web festival tahunan yang diselenggarakan oleh sekolah untuk menampilkan kreativitas, bakat, dan semangat para siswa dalam berbagai bidang.</p>
+        <p>Info lebih lanjut:</p>
+        <div class="sosmed-links">
+          <a href="https://instagram.com/astrochanted" target="_blank">📸 Instagram</a>
+          <a href="https://tiktok.com/@4grichee" target="_blank">🎵 TikTok</a>
+          <a href="mailto:Akari.san140408@gmail.com">📧 Email</a>
+        </div>
+      </div>
+
+      <div class="about-block saran-link">
+        <a href="saran.html" class="big-button">Ada saran/kritik? Klik di sini!</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      &copy; 2025 SchoolFest. All Rights Reserved.
+    </footer>
+  </div>
+  <script>
+    window.addEventListener("load", function () {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kritik & Saran</title>
+  <link rel="stylesheet" href="contact.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <script src="js/script.js" defer></script>
+  <style>
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nomnom-loader {
+      width: 100px;
+      animation: bounce 3s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+  <style>
+    /* Tambahan CSS untuk error message */
+    .error-message {
+      color: #ff4d4d;
+      font-size: 12px;
+      margin-top: 5px;
+      font-family: 'Press Start 2P', cursive;
+      text-shadow:
+        0 0 3px #ff4d4d,
+        0 0 5px #ff1a1a;
+    }
+  </style>
+</head>
+<body>
+   <!-- Loading Animation -->
+<div id="loader">
+  <img src="nomnomload.gif" class="nomnom-loader" alt="Loading...">
+</div>
+  <div class="wrapper">
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="logo">SchoolFest</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="event.html">Event</a></li>
+          <li><a href="sorotan.html">Sorotan</a></li>
+          <li><a href="contact.html">About</a></li>
+          <li><a href="lojin.html">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="saran-section">
+      <h2 class="neon-glow">Form Kritik & Saran</h2>
+      <form id="saranForm" class="saran-form" novalidate>
+        <label for="username">Nama:</label>
+        <input type="text" id="username" name="username" required minlength="5" maxlength="20" />
+        <div id="usernameError" class="error-message"></div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+        <div id="emailError" class="error-message"></div>
+
+        <label for="message">Pesan / Masukan:</label>
+        <textarea id="message" name="message" rows="4" required minlength="5"></textarea>
+        <div id="messageError" class="error-message"></div>
+
+        <button type="submit" class="big-button">Kirim</button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      &copy; 2025 SchoolFest. All Rights Reserved.
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('saranForm');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let isValid = true;
+
+        // Reset error messages
+        const usernameError = document.getElementById('usernameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+
+        usernameError.textContent = '';
+        emailError.textContent = '';
+        messageError.textContent = '';
+
+        // Validasi username
+        const username = form.username.value.trim();
+        if (username.length < 5) {
+          usernameError.textContent = 'Nama pengguna minimal 5 karakter.';
+          isValid = false;
+        } else if (username.length > 20) {
+          usernameError.textContent = 'Nama pengguna maksimal 20 karakter.';
+          isValid = false;
+        }
+
+        // Validasi email dengan HTML5 checkValidity
+        const emailInput = form.email;
+        if (!emailInput.checkValidity()) {
+          if (emailInput.validity.valueMissing) {
+            emailError.textContent = 'Email wajib diisi.';
+          } else if (emailInput.validity.typeMismatch) {
+            emailError.textContent = 'Format email tidak valid.';
+          }
+          isValid = false;
+        }
+
+        // Validasi pesan minimal 5 karakter
+        const message = form.message.value.trim();
+        if (message.length < 5) {
+          messageError.textContent = 'Pesan minimal 5 karakter.';
+          isValid = false;
+        }
+
+        if (isValid) {
+          alert('Form berhasil dikirim!');
+          form.reset();
+        }
+      });
+    });
+    window.addEventListener("load", function () {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

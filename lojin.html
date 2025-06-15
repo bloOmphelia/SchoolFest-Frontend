@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Retro Pixel Fest</title>
+  <link rel="stylesheet" href="lojin.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <script src="js/script.js" defer></script>
+  <style>
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #000000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nomnom-loader {
+      width: 100px;
+      animation: bounce 3s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+  </style>
+</head>
+<body>
+   <!-- Loading Animation -->
+<div id="loader">
+  <img src="nomnomload.gif" class="nomnom-loader" alt="Loading...">
+</div>
+  <!-- Navbar Start -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <h1 class="logo">SchoolFest</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="event.html">Event</a></li>
+        <li><a href="sorotan.html">Sorotan</a></li>
+        <li><a href="contact.html">About</a></li>
+        <li><a href="lojin.html" class="login-btn">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <div class="login-wrapper">
+    <div class="login-card">
+      <h2 class="login-title">Login</h2>
+      <form class="login-form" id="loginForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <button type="submit">Masuk</button>
+        <div id="error" class="login-note"></div>
+
+        <p class="login-note">Belum punya akun? <a href="#">Daftar</a></p>
+      </form>
+    </div>
+  </div>
+    <footer class="footer">
+      <p>&copy; 2025 SchoolFest. All rights reserved.</p>
+    </footer>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const password = document.getElementById("password").value;
+      const error = document.getElementById("error");
+
+      const minLength = /.{8,}/;
+      const upper = /[A-Z]/;
+      const lower = /[a-z]/;
+      const digit = /[0-9]/;
+
+      if (!minLength.test(password)) {
+        error.textContent = "Password harus minimal 8 karakter.";
+      } else if (!upper.test(password)) {
+        error.textContent = "Password harus mengandung huruf besar.";
+      } else if (!lower.test(password)) {
+        error.textContent = "Password harus mengandung huruf kecil.";
+      } else if (!digit.test(password)) {
+        error.textContent = "Password harus mengandung angka.";
+      } else {
+        error.textContent = "";
+        alert("Login berhasil!");
+        // Lanjutkan login atau redirect di sini
+      }
+    });
+    window.addEventListener("load", function () {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
